@@ -1,5 +1,4 @@
 import com.google.protobuf.gradle.*
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val javaVersion = "11"
 val protobufVersion = "3.21.0"
