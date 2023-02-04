@@ -67,7 +67,20 @@ java {
     sourceCompatibility = JavaVersion.toVersion(javaVersion)
     targetCompatibility = JavaVersion.toVersion(javaVersion)
 }
+publishing {
+    repositories {
+        mavenLocal()
+    }
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "de.naaihr.services"
+            artifactId = "player"
+            version = "1.0-SNAPSHOT"
 
+            from(components["java"])
+        }
+    }
+}
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = javaVersion
