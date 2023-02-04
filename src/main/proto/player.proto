@@ -1,0 +1,49 @@
+syntax = "proto3";
+package de.naaihr.services.player.proto;
+option java_multiple_files = true;
+
+service PlayerService {
+  rpc healthCheck (HealthCheckRequest) returns (HealthCheckResponse);
+
+  rpc getPlayer(UniqueId) returns (CorePlayer);
+  rpc savePlayer(CorePlayer) returns (CorePlayer);
+
+  rpc getGlobalPlayerCount(GlobalPlayerCountRequest) returns (GlobalPlayerCountResponse);
+
+}
+//---------------------------------------
+message HealthCheckRequest {
+  string message = 1;
+}
+
+message HealthCheckResponse {
+  bool answer = 1;
+}
+
+//---------------------------------------
+message UniqueId {
+  string uniqueId = 1;   //uuid of a player
+}
+
+message CorePlayer {
+  string id = 1;   //uuid of a player
+
+  string name = 2;       //name of the player
+
+  int64 firstJoin = 3;    //timestamp of first join
+  int64 lastJoin = 4;    //timestamp of last/ current join
+
+  int64 onlineTime = 5;  //onlineTime in ms
+  bool afk = 6;         //boolean if player is afk
+
+  int32 coins = 7;       //coins of a player
+  int32 level = 8;       //level of a player
+  int32 xp = 9;          //xp of a player
+}
+//---------------------------------------
+message GlobalPlayerCountRequest {} // No param
+
+message GlobalPlayerCountResponse {
+  int32 count = 1;
+}
+//---------------------------------------
