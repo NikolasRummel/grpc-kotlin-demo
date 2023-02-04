@@ -6,10 +6,11 @@ val grpcVersion = "1.46.0"
 val grpcKotlinVersion = "1.3.0"
 
 plugins {
-    kotlin("jvm") version "1.6.21"
+    kotlin("jvm") version "1.8.10"
     id("com.google.protobuf") version "0.8.18"
     java
     application
+    `maven-publish`
 }
 application {
     group = "de.naaihr"
